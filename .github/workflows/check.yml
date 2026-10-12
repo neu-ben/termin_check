@@ -24,7 +24,7 @@ jobs:
           key: stand-${{ github.run_id }}
           restore-keys: stand-
 
-      - run: python kirchen_austritt.py
+      - run: python kirch_aus.py
         env:
           MAIL_ADRESSE: ${{ secrets.MAIL_ADRESSE }}
           MAIL_PASSWORT: ${{ secrets.MAIL_PASSWORT }}
