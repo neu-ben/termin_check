@@ -7,8 +7,9 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 URL = "https://traukalender.magdeburg.de/de/Termine-96.html?ort=3430&typ=1166"
-FREI = ("td.tko-datepicker-day--unavailable"
-        ":not(.tko-datepicker-day--past)")
+FREI = ("td.tko-datepicker-day"
+           ":not(.tko-datepicker-day--unavailable)"
+           ":not(.tko-datepicker-day--past)")
 
 STATE_FILE = Path("letzter_stand.json")
 
