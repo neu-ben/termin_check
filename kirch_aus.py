@@ -18,7 +18,7 @@ MAIL_PASSWORT = os.environ["MAIL_PASSWORT"]
 SMTP_SERVER = "smtp.web.de"
 SMTP_PORT = 587
 
-
+#Browser zugriff auf seite
 def freie_tage():
     with sync_playwright() as p:
         browser = p.chromium.launch()
