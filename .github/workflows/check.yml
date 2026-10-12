@@ -1,0 +1,30 @@
+name: Termin pruefen
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+      - run: playwright install --with-deps chromium
+
+      - uses: actions/cache@v4
+        with:
+          path: letzter_stand.json
+          key: stand-${{ github.run_id }}
+          restore-keys: stand-
+
+      - run: python kirchen_austritt.py
+        env:
+          MAIL_ADRESSE: ${{ secrets.MAIL_ADRESSE }}
+          MAIL_PASSWORT: ${{ secrets.MAIL_PASSWORT }}
